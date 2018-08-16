@@ -1,0 +1,68 @@
+{
+  "_from": "git+https://github.com/nuvoPoint/cordova-plugin-sumup.git",
+  "_id": "cordova-plugin-sumup@1.0.0",
+  "_inBundle": false,
+  "_location": "/cordova-plugin-sumup",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "https://github.com/nuvoPoint/cordova-plugin-sumup",
+    "rawSpec": "https://github.com/nuvoPoint/cordova-plugin-sumup",
+    "saveSpec": "git+https://github.com/nuvoPoint/cordova-plugin-sumup.git",
+    "fetchSpec": "https://github.com/nuvoPoint/cordova-plugin-sumup.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/nuvoPoint/cordova-plugin-sumup.git#cdbd0d130805e35c093430e48bbe8b1f5b22b496",
+  "_spec": "https://github.com/nuvoPoint/cordova-plugin-sumup",
+  "_where": "C:\\Users\\Cesar Seabra\\Desktop\\Phonegap Teste Android\\Phonegap Teste Android",
+  "author": {
+    "name": "nuvoPoint"
+  },
+  "bugs": {
+    "url": "https://github.com/nuvoPoint/cordova-plugin-sumup.git/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-sumup",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "deprecated": false,
+  "description": "Cordova plugin for integration with sumup sdk",
+  "devDependencies": {
+    "cordova-paramedic": "git+https://github.com/apache/cordova-paramedic.git",
+    "eslint": "^3.18.0"
+  },
+  "engines": {
+    "cordova": ">=6.0.0"
+  },
+  "homepage": "https://github.com/nuvoPoint/cordova-plugin-sumup",
+  "keywords": [
+    "ecosystem:cordova",
+    "ecosystem:phonegap",
+    "cordova",
+    "phonegap",
+    "sumup"
+  ],
+  "license": "MIT",
+  "module": "./www/sumup.js",
+  "name": "cordova-plugin-sumup",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nuvoPoint/cordova-plugin-sumup.git"
+  },
+  "scripts": {
+    "cordova-paramedic": "cordova-paramedic",
+    "lint": "eslint **/*.js",
+    "test:android": "cordova-paramedic --cleanUpAfterRun --verbose --platform android --plugin .",
+    "test:ios": "cordova-paramedic --cleanUpAfterRun --verbose --platform ios --plugin ."
+  },
+  "typings": "./www/sumup.d.ts",
+  "version": "1.0.0"
+}

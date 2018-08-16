@@ -1,0 +1,59 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-battery-status": {
+      "PACKAGE_NAME": "com.bluetooth.test"
+    },
+    "cordova-plugin-bluetoothClassic-serial": {
+      "PACKAGE_NAME": "com.bluetooth.test"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.bluetooth.test"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.bluetooth.test"
+    },
+    "cordova-plugin-device-orientation": {
+      "PACKAGE_NAME": "com.bluetooth.test"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.bluetooth.test"
+    },
+    "cordova-plugin-globalization": {
+      "PACKAGE_NAME": "com.bluetooth.test"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.bluetooth.test"
+    },
+    "cordova-plugin-navigationbar": {
+      "PACKAGE_NAME": "com.bluetooth.test"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.bluetooth.test"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.bluetooth.test"
+    },
+    "cordova-plugin-sumup": {
+      "SUMUP_API_KEY": "1204994d-c495-4e18-9b7e-08d7a7386605",
+      "PACKAGE_NAME": "com.bluetooth.test"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.bluetooth.test"
+    },
+    "cordova.plugins.diagnostic": {
+      "PACKAGE_NAME": "com.bluetooth.test"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-custom-config": {
+      "PACKAGE_NAME": "com.bluetooth.test"
+    }
+  }
+}

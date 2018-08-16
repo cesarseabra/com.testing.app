@@ -1,0 +1,38 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/mini/Desktop/Phonegap Teste Android/Phonegap Teste Android/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-hdpi-v4/values-hdpi-v4.xml",
+            "map": [
+                {
+                    "source": "/Users/mini/.gradle/caches/transforms-1/files-1.1/merchant-sdk-3.0.0.aar/bb453689df5d001345937754549bdb10/res/values-hdpi-v4/values-hdpi-v4.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,116,165,220,276,332,393,452,513,584,631,682,736,792,841,891,952",
+                        "endColumns": "60,48,54,55,55,60,58,60,70,46,50,53,55,48,49,60,53",
+                        "endOffsets": "111,160,215,271,327,388,447,508,579,626,677,731,787,836,886,947,1001"
+                    }
+                },
+                {
+                    "source": "/Users/mini/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/99390ca096c51016d7eb3030675f5e56/res/values-hdpi-v4/values-hdpi-v4.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "6",
+                        "endColumns": "13",
+                        "endOffsets": "327"
+                    },
+                    "to": {
+                        "startLines": "19",
+                        "startColumns": "4",
+                        "startOffsets": "1006",
+                        "endLines": "23",
+                        "endColumns": "13",
+                        "endOffsets": "1278"
+                    }
+                }
+            ]
+        }
+    ]
+}

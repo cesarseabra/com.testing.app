@@ -1,0 +1,58 @@
+{
+  "_from": "git+https://github.com/cranberrygame/cordova-plugin-navigationbar.git",
+  "_id": "cordova-plugin-navigationbar@1.0.31",
+  "_inBundle": false,
+  "_location": "/cordova-plugin-navigationbar",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "https://github.com/cranberrygame/cordova-plugin-navigationbar",
+    "rawSpec": "https://github.com/cranberrygame/cordova-plugin-navigationbar",
+    "saveSpec": "git+https://github.com/cranberrygame/cordova-plugin-navigationbar.git",
+    "fetchSpec": "https://github.com/cranberrygame/cordova-plugin-navigationbar.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/cranberrygame/cordova-plugin-navigationbar.git#2ac1ca1de23d33729f77364b266014096bf8be0e",
+  "_spec": "https://github.com/cranberrygame/cordova-plugin-navigationbar",
+  "_where": "C:\\Users\\Cesar Seabra\\Desktop\\Phonegap Teste Android\\Phonegap Teste Android",
+  "author": {
+    "name": "cranberrygame"
+  },
+  "bugs": {
+    "url": "https://github.com/cranberrygame/cordova-plugin-navigationbar/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-navigationbar",
+    "platforms": [
+      "android"
+    ]
+  },
+  "deprecated": false,
+  "description": "hide and auto hide navigation bar.",
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "homepage": "https://github.com/cranberrygame/cordova-plugin-navigationbar#readme",
+  "keywords": [
+    "cordova",
+    "plugin",
+    "navigationbar",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-navigationbar",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cranberrygame/cordova-plugin-navigationbar.git"
+  },
+  "version": "1.0.31"
+}

@@ -1,0 +1,396 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {
+      "*-Info.plist": {
+        "parents": {
+          "UISupportedExternalAccessoryProtocols": [
+            {
+              "xml": "<array><string>com.zebra.rawport</string></array>",
+              "count": 15
+            }
+          ],
+          "NSLocationWhenInUseUsageDescription": [
+            {
+              "xml": "<string>This app needs to access your location to manage sales.</string>",
+              "count": 1,
+              "mode": "merge",
+              "id": "config.xml"
+            }
+          ],
+          "NSBluetoothPeripheralUsageDescription": [
+            {
+              "xml": "<string>The app needs to connect to Bluetooth peripherals to detect the SumUp Card Terminal correctly. Please confirm with OK as you cannot use your card reader otherwise.</string>",
+              "count": 1
+            }
+          ],
+          "NSMicrophoneUsageDescription": [
+            {
+              "xml": "<string>The app needs to access the microphone of your audio jack in order for the SumUp Card Reader to be detected correctly. Please confirm with OK as you cannot use your card reader otherwise.</string>",
+              "count": 1
+            }
+          ],
+          "NSLocationUsageDescription": [
+            {
+              "xml": "<string>To provide a secure service, we need to know your location. Without location information, you cannot use SumUp.</string>",
+              "count": 1
+            }
+          ],
+          "NSPhotoLibraryUsageDescription": [
+            {
+              "xml": "<string>To be able to upload images, please allow the app access to your photo library.</string>",
+              "count": 1
+            }
+          ],
+          "SUMUP_API_KEY": [
+            {
+              "xml": "<string>1204994d-c495-4e18-9b7e-08d7a7386605</string>",
+              "count": 1
+            }
+          ],
+          "NSLocationAlwaysAndWhenInUseUsageDescription": [
+            {
+              "xml": "<string>This app requires constant access to your location in order to track your position, even when the screen is off or the app is in the background.</string>",
+              "count": 1
+            }
+          ],
+          "NSLocationAlwaysUsageDescription": [
+            {
+              "xml": "<string>This app requires constant access to your location in order to track your position, even when the screen is off or the app is in the background.</string>",
+              "count": 1
+            }
+          ],
+          "NSCameraUsageDescription": [],
+          "NSContactsUsageDescription": [],
+          "NSCalendarsUsageDescription": [],
+          "NSRemindersUsageDescription": [],
+          "NSMotionUsageDescription": []
+        }
+      },
+      "config.xml": {
+        "parents": {
+          "/*": [
+            {
+              "xml": "<feature name=\"Battery\"><param name=\"ios-package\" value=\"CDVBattery\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"Camera\"><param name=\"ios-package\" value=\"CDVCamera\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<preference name=\"CameraUsesGeolocation\" value=\"false\" />",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"Compass\"><param name=\"ios-package\" value=\"CDVCompass\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"Geolocation\"><param name=\"ios-package\" value=\"CDVLocation\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"Globalization\"><param name=\"ios-package\" value=\"CDVGlobalization\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"InAppBrowser\"><param name=\"ios-package\" value=\"CDVInAppBrowser\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"SplashScreen\"><param name=\"ios-package\" value=\"CDVSplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"StatusBar\"><param name=\"ios-package\" value=\"CDVStatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<preference name=\"StatusBarOverlaysWebView\" value=\"true\" />",
+              "count": 1
+            },
+            {
+              "xml": "<preference name=\"StatusBarStyle\" value=\"lightcontent\" />",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"SumUp\"><param name=\"ios-package\" value=\"CDVSumUp\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"Diagnostic\"><param name=\"ios-package\" value=\"Diagnostic\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"Diagnostic_Location\"><param name=\"ios-package\" value=\"Diagnostic_Location\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            }
+          ],
+          "/widget": [
+            {
+              "xml": "<feature name=\"BluetoothClassicSerial\"><param name=\"ios-package\" onload=\"true\" value=\"BluetoothClassicSerial\" /></feature>",
+              "count": 1
+            }
+          ]
+        }
+      }
+    }
+  },
+  "installed_plugins": {
+    "cordova-custom-config": {
+      "PACKAGE_NAME": "com.bluetooth.test"
+    },
+    "cordova-plugin-battery-status": {
+      "PACKAGE_NAME": "com.bluetooth.test"
+    },
+    "cordova-plugin-bluetoothClassic-serial": {
+      "PACKAGE_NAME": "com.bluetooth.test"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.bluetooth.test"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.bluetooth.test"
+    },
+    "cordova-plugin-device-orientation": {
+      "PACKAGE_NAME": "com.bluetooth.test"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.bluetooth.test"
+    },
+    "cordova-plugin-globalization": {
+      "PACKAGE_NAME": "com.bluetooth.test"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.bluetooth.test"
+    },
+    "cordova-plugin-navigationbar": {
+      "PACKAGE_NAME": "com.bluetooth.test"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.bluetooth.test"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.bluetooth.test"
+    },
+    "cordova-plugin-sumup": {
+      "SUMUP_API_KEY": "1204994d-c495-4e18-9b7e-08d7a7386605",
+      "PACKAGE_NAME": "com.bluetooth.test"
+    },
+    "cordova.plugins.diagnostic": {
+      "PACKAGE_NAME": "com.bluetooth.test"
+    }
+  },
+  "dependent_plugins": {},
+  "modules": [
+    {
+      "id": "cordova-plugin-battery-status.battery",
+      "file": "plugins/cordova-plugin-battery-status/www/battery.js",
+      "pluginId": "cordova-plugin-battery-status",
+      "clobbers": [
+        "navigator.battery"
+      ]
+    },
+    {
+      "id": "cordova-plugin-bluetoothClassic-serial.bluetoothClassicSerial",
+      "file": "plugins/cordova-plugin-bluetoothClassic-serial/www/bluetoothClassicSerial.js",
+      "pluginId": "cordova-plugin-bluetoothClassic-serial",
+      "clobbers": [
+        "window.bluetoothClassicSerial"
+      ]
+    },
+    {
+      "id": "cordova-plugin-camera.Camera",
+      "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
+      "pluginId": "cordova-plugin-camera",
+      "clobbers": [
+        "Camera"
+      ]
+    },
+    {
+      "id": "cordova-plugin-camera.CameraPopoverOptions",
+      "file": "plugins/cordova-plugin-camera/www/CameraPopoverOptions.js",
+      "pluginId": "cordova-plugin-camera",
+      "clobbers": [
+        "CameraPopoverOptions"
+      ]
+    },
+    {
+      "id": "cordova-plugin-camera.camera",
+      "file": "plugins/cordova-plugin-camera/www/Camera.js",
+      "pluginId": "cordova-plugin-camera",
+      "clobbers": [
+        "navigator.camera"
+      ]
+    },
+    {
+      "id": "cordova-plugin-camera.CameraPopoverHandle",
+      "file": "plugins/cordova-plugin-camera/www/ios/CameraPopoverHandle.js",
+      "pluginId": "cordova-plugin-camera",
+      "clobbers": [
+        "CameraPopoverHandle"
+      ]
+    },
+    {
+      "id": "cordova-plugin-device.device",
+      "file": "plugins/cordova-plugin-device/www/device.js",
+      "pluginId": "cordova-plugin-device",
+      "clobbers": [
+        "device"
+      ]
+    },
+    {
+      "id": "cordova-plugin-device-orientation.CompassError",
+      "file": "plugins/cordova-plugin-device-orientation/www/CompassError.js",
+      "pluginId": "cordova-plugin-device-orientation",
+      "clobbers": [
+        "CompassError"
+      ]
+    },
+    {
+      "id": "cordova-plugin-device-orientation.CompassHeading",
+      "file": "plugins/cordova-plugin-device-orientation/www/CompassHeading.js",
+      "pluginId": "cordova-plugin-device-orientation",
+      "clobbers": [
+        "CompassHeading"
+      ]
+    },
+    {
+      "id": "cordova-plugin-device-orientation.compass",
+      "file": "plugins/cordova-plugin-device-orientation/www/compass.js",
+      "pluginId": "cordova-plugin-device-orientation",
+      "clobbers": [
+        "navigator.compass"
+      ]
+    },
+    {
+      "id": "cordova-plugin-geolocation.Coordinates",
+      "file": "plugins/cordova-plugin-geolocation/www/Coordinates.js",
+      "pluginId": "cordova-plugin-geolocation",
+      "clobbers": [
+        "Coordinates"
+      ]
+    },
+    {
+      "id": "cordova-plugin-geolocation.PositionError",
+      "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
+      "pluginId": "cordova-plugin-geolocation",
+      "clobbers": [
+        "PositionError"
+      ]
+    },
+    {
+      "id": "cordova-plugin-geolocation.Position",
+      "file": "plugins/cordova-plugin-geolocation/www/Position.js",
+      "pluginId": "cordova-plugin-geolocation",
+      "clobbers": [
+        "Position"
+      ]
+    },
+    {
+      "id": "cordova-plugin-geolocation.geolocation",
+      "file": "plugins/cordova-plugin-geolocation/www/geolocation.js",
+      "pluginId": "cordova-plugin-geolocation",
+      "clobbers": [
+        "navigator.geolocation"
+      ]
+    },
+    {
+      "id": "cordova-plugin-globalization.GlobalizationError",
+      "file": "plugins/cordova-plugin-globalization/www/GlobalizationError.js",
+      "pluginId": "cordova-plugin-globalization",
+      "clobbers": [
+        "window.GlobalizationError"
+      ]
+    },
+    {
+      "id": "cordova-plugin-globalization.globalization",
+      "file": "plugins/cordova-plugin-globalization/www/globalization.js",
+      "pluginId": "cordova-plugin-globalization",
+      "clobbers": [
+        "navigator.globalization"
+      ]
+    },
+    {
+      "id": "cordova-plugin-inappbrowser.inappbrowser",
+      "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+      "pluginId": "cordova-plugin-inappbrowser",
+      "clobbers": [
+        "cordova.InAppBrowser.open",
+        "window.open"
+      ]
+    },
+    {
+      "id": "cordova-plugin-navigationbar.navigationbar",
+      "file": "plugins/cordova-plugin-navigationbar/www/navigationbar.js",
+      "pluginId": "cordova-plugin-navigationbar",
+      "clobbers": [
+        "window.navigationbar"
+      ]
+    },
+    {
+      "id": "cordova-plugin-splashscreen.SplashScreen",
+      "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
+      "pluginId": "cordova-plugin-splashscreen",
+      "clobbers": [
+        "navigator.splashscreen"
+      ]
+    },
+    {
+      "id": "cordova-plugin-statusbar.statusbar",
+      "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+      "pluginId": "cordova-plugin-statusbar",
+      "clobbers": [
+        "window.StatusBar"
+      ]
+    },
+    {
+      "id": "cordova-plugin-sumup.sumup",
+      "file": "plugins/cordova-plugin-sumup/www/sumup.js",
+      "pluginId": "cordova-plugin-sumup",
+      "clobbers": [
+        "window.sumUp"
+      ]
+    },
+    {
+      "id": "cordova.plugins.diagnostic.Diagnostic",
+      "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.js",
+      "pluginId": "cordova.plugins.diagnostic",
+      "merges": [
+        "cordova.plugins.diagnostic"
+      ]
+    },
+    {
+      "id": "cordova.plugins.diagnostic.Diagnostic_Location",
+      "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.location.js",
+      "pluginId": "cordova.plugins.diagnostic",
+      "merges": [
+        "cordova.plugins.diagnostic.location"
+      ]
+    }
+  ],
+  "plugin_metadata": {
+    "cordova-custom-config": "2.0.3",
+    "cordova-plugin-battery-status": "2.0.2",
+    "cordova-plugin-bluetoothClassic-serial": "0.9.8",
+    "cordova-plugin-camera": "4.0.3",
+    "cordova-plugin-device": "2.0.2",
+    "cordova-plugin-device-orientation": "1.0.7",
+    "cordova-plugin-geolocation": "4.0.1",
+    "cordova-plugin-globalization": "1.11.0",
+    "cordova-plugin-inappbrowser": "2.0.2",
+    "cordova-plugin-navigationbar": "1.0.31",
+    "cordova-plugin-splashscreen": "5.0.2",
+    "cordova-plugin-statusbar": "2.4.2",
+    "cordova-plugin-sumup": "1.1.1",
+    "cordova.plugins.diagnostic": "4.0.8"
+  }
+}

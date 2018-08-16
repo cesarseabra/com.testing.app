@@ -1,0 +1,68 @@
+{
+  "name": "com.last2ticket.pos",
+  "version": "1.0.0",
+  "scripts": {
+    "serve": "phonegap serve",
+    "genDocs": "./node_modules/.bin/jsdoc -c ./conf.json",
+    "modTemplateDoc": "node ./scripts/modTemplateDocs.js",
+    "documentation": "npm run genDocs && npm run modTemplateDoc",
+    "zipProject": "node ./scripts/zipContent.js",
+    "loginToPG": "pgb login",
+    "createPGApp": "npm run zipProject && pgb new Project.zip",
+    "updatePGApp": "npm run zipProject && pgb update 3255295 Project.zip"
+  },
+  "dependencies": {
+    "cordova-android": "^7.0.0",
+    "cordova-browser": "^5.0.3",
+    "cordova-custom-config": "^2.0.3",
+    "cordova-ios": "^4.5.5",
+    "cordova-plugin-battery-status": "^2.0.2",
+    "cordova-plugin-bluetoothClassic-serial": "^0.9.8",
+    "cordova-plugin-camera": "^4.0.3",
+    "cordova-plugin-device": "^2.0.2",
+    "cordova-plugin-device-orientation": "^1.0.7",
+    "cordova-plugin-geolocation": "^4.0.1",
+    "cordova-plugin-globalization": "^1.0.9",
+    "cordova-plugin-inappbrowser": "^2.0.2",
+    "cordova-plugin-navigationbar": "https://github.com/cranberrygame/cordova-plugin-navigationbar",
+    "cordova-plugin-splashscreen": "^5.0.2",
+    "cordova-plugin-statusbar": "^2.4.2",
+    "cordova-plugin-sumup": "git+https://github.com/nuvoPoint/cordova-plugin-sumup.git",
+    "cordova-plugin-whitelist": "^1.3.3",
+    "cordova.plugins.diagnostic": "^4.0.8"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-battery-status": {},
+      "cordova-plugin-camera": {},
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-device-orientation": {},
+      "cordova-plugin-geolocation": {},
+      "cordova-plugin-globalization": {},
+      "cordova-plugin-statusbar": {},
+      "cordova-plugin-bluetoothClassic-serial": {},
+      "cordova-plugin-navigationbar": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-sumup": {
+        "SUMUP_API_KEY": "1204994d-c495-4e18-9b7e-08d7a7386605"
+      },
+      "cordova.plugins.diagnostic": {}
+    },
+    "platforms": [
+      "browser",
+      "android"
+    ]
+  },
+  "devDependencies": {
+    "adm-zip": "^0.4.11",
+    "bootstrap": "^4.1.1",
+    "docdash": "^0.4.0",
+    "jasmine": "^3.1.0",
+    "jquery": "^3.3.1",
+    "jsdoc": "^3.5.5",
+    "pgb-cli": "^1.0.2",
+    "sweetalert": "^2.1.0"
+  }
+}

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="isTallDevice">true</bool>
+    <dimen name="welcome_screenshot_title_padding_left">@dimen/margin_12x</dimen>
+</resources>

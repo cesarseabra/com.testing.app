@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="isTallDevice">false</bool>
+    <dimen name="welcome_activity_margin_bottom">@dimen/margin_4x</dimen>
+    <dimen name="welcome_screenshot_title_padding_top">@dimen/margin_16x</dimen>
+    <style name="WelcomeScreenshotHeader">
+        <item name="android:orientation">horizontal</item>
+    </style>
+</resources>

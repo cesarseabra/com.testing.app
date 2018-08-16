@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="product_image_height">91dp</dimen>
+    <dimen name="product_width">105dp</dimen>
+    <integer name="grid_columns">3</integer>
+</resources>
