@@ -38,16 +38,111 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function (id) {
+        this.registerLocationChangeHandler();
+        this.requestLocationAuth();
+    },
+    requestLocationAuth: function () {
+        if (device.platform == 'Android') {
+            cordova.plugins.diagnostic.requestLocationAuthorization(function (status) {
+                switch (status) {
+                    case cordova.plugins.diagnostic.permissionStatus.GRANTED:
+                        cordova.plugins.diagnostic.isLocationEnabled(function (enabled) {
+                            if (!enabled) {
+                                app.requestLocationServicesActivation();
+                            }
+                        }, function (error) {
+                            console.error("The following error occurred: " + error);
+                        });
+                        break;
 
+                    case cordova.plugins.diagnostic.permissionStatus.NOT_REQUESTED:
+                        Ctrl.location_use_location = Ctrl.LOCATION_NONE;
+                        break;
+
+                    case cordova.plugins.diagnostic.permissionStatus.DENIED:
+                        Ctrl.location_use_location = Ctrl.LOCATION_REFUSED;
+                        break;
+
+                    case cordova.plugins.diagnostic.permissionStatus.DENIED_ALWAYS:
+                        Ctrl.location_use_location = Ctrl.LOCATION_REFUSED;
+                        break;
+
+                }
+            }, function (error) {
+                Ctrl.location_use_location = Ctrl.LOCATION_NONE;
+                console.log('Error request: ' + error);
+            });
+        } else if (device.platform == 'ios') {
+            cordova.plugins.diagnostic.getLocationAuthorizationStatus(function (status) {
+                switch (status) {
+                    case cordova.plugins.diagnostic.permissionStatus.NOT_REQUESTED:
+                        Ctrl.location_use_location = Ctrl.LOCATION_NONE;
+                        break;
+
+                    case cordova.plugins.diagnostic.permissionStatus.DENIED:
+                        Ctrl.location_use_location = Ctrl.LOCATION_REFUSED;
+                        break;
+
+                    case cordova.plugins.diagnostic.permissionStatus.GRANTED:
+                        Ctrl.location_use_location = Ctrl.LOCATION_AGREE;
+                        break;
+
+                    case cordova.plugins.diagnostic.permissionStatus.GRANTED_WHEN_IN_USE:
+                        Ctrl.location_use_location = Ctrl.LOCATION_AGREE;
+                        break;
+
+                }
+            }, function (error) {
+                console.log('Error request: ' + error);
+            });
+        }
+    },
+    registerLocationChangeHandler: function () {
+        cordova.plugins.diagnostic.registerLocationStateChangeHandler(function (state) {
+            if ((device.platform === "Android" && state !== cordova.plugins.diagnostic.locationMode.LOCATION_OFF) ||
+                (device.platform === "iOS") && (state === cordova.plugins.diagnostic.permissionStatus.GRANTED ||
+                    state === cordova.plugins.diagnostic.permissionStatus.GRANTED_WHEN_IN_USE
+                )) {
+                swal('Location Services Active', 'Done! :D', 'success');
+                Ctrl.location_use_location = Ctrl.LOCATION_AGREE;
+            } else {
+                app.requestLocationServicesActivation();
+            }
+        });
+    },
+    requestLocationServicesActivation: function () {
+        if (device.platform == 'Android') {
+            swal({
+                    title: "Location Disabled",
+                    text: "In order to a better sales managment please consider turning on the location services on yout device!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonText: "Settings",
+                    closeOnConfirm: false
+                },
+                function (confirmed) {
+                    if (confirmed) {
+                        cordova.plugins.diagnostic.switchToLocationSettings();
+                    } else {
+                        Ctrl.location_use_location = Ctrl.LOCATION_REFUSED;
+                    }
+                });
+        } else {
+            Ctrl.location_use_location = Ctrl.LOCATION_NONE;
+        }
     }
 };
 
 var Ctrl = {
     currentLang: 'en',
-    location_Latitude: null,
-    location_Longitude: null,
+    location_use_location: false,
+    location_coords: {
+        latitude: null,
+        longitude: null
+    },
     LOCATION_REFUSED: 'err_refused',
-    LOCATION_NONE: 'err_none'
+    LOCATION_NONE: 'err_none',
+    LOCATION_AGREE: 'use',
 };
 
 //########################################################
@@ -58,7 +153,6 @@ var show = function (varName, vari) {
         '<span class="variableName">:</span>' +
         '<span class="variable">' + vari + '</span>' +
         '<br>');
-
     $('.textBody').goTo();
 };
 
@@ -123,70 +217,106 @@ $('.subscribe').on('click', function () {
 /* { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true };
  */
 $('.getLocation').on('click', function () {
-    navigator.geolocation.getCurrentPosition(function (position) {
 
-        show('LAT', position.coords.latitude);
-        console.log('LAT: ' + position.coords.latitude);
+    if (Ctrl.location_use_location != Ctrl.LOCATION_NONE && Ctrl.location_use_location != Ctrl.LOCATION_REFUSED) {
+        navigator.geolocation.getCurrentPosition(function (position) {
 
-        show('LON', position.coords.longitude);
-        console.log('LON: ' + position.coords.longitude);
+            show('LAT', position.coords.latitude);
+            console.log('LAT: ' + position.coords.latitude);
 
-        show('ACC', position.coords.accuracy);
-        console.log('ACC: ' + position.coords.accuracy);
+            show('LON', position.coords.longitude);
+            console.log('LON: ' + position.coords.longitude);
 
-        show('ALT', position.coords.altitude);
-        console.log('ALT: ' + position.coords.altitude);
+            show('ACC', position.coords.accuracy);
+            console.log('ACC: ' + position.coords.accuracy);
 
-        show('HEA', position.coords.heading);
-        console.log('HEA: ' + position.coords.heading);
+            show('ALT', position.coords.altitude);
+            console.log('ALT: ' + position.coords.altitude);
 
-        show('SPE', position.coords.speed);
-        console.log('SPE: ' + position.coords.speed);
+            show('HEA', position.coords.heading);
+            console.log('HEA: ' + position.coords.heading);
 
-        show('ALT ACC', position.coords.altitudeAccuracy);
-        console.log('ALT ACC: ' + position.coords.altitudeAccuracy);
+            show('SPE', position.coords.speed);
+            console.log('SPE: ' + position.coords.speed);
 
-    }, function (error) {
+            show('ALT ACC', position.coords.altitudeAccuracy);
+            console.log('ALT ACC: ' + position.coords.altitudeAccuracy);
 
-        show('ERR code', error.code);
-        console.log('ERR code: ' + error.code);
+            Ctrl.location_coords.latitude = position.coords.latitude;
+            Ctrl.location_coords.longitude = position.coords.longitude;
 
-        show('ERR message', error.message);
-        console.log('ERR message: ' + error.message);
+        }, function (error) {
 
-    }, {
-        maximumAge: 3000,
-        timeout: 5000,
-        enableHighAccuracy: false
-    });
+            show('ERR code', error.code);
+            console.log('ERR code: ' + error.code);
+
+            show('ERR message', error.message);
+            console.log('ERR message: ' + error.message);
+
+        }, {
+            maximumAge: 3000,
+            timeout: 5000,
+            enableHighAccuracy: false
+        });
+    }
+
+
 });
 
 //########################################################
 
 $('.checkPerm').on('click', function () {
-    cordova.plugins.diagnostic.getLocationAuthorizationStatus(function (status) {
-        switch (status) {
-            case cordova.plugins.diagnostic.permissionStatus.NOT_REQUESTED:
-                console.log("Permission not requested");
-                show('status', 'Permission to use the location has not been requested yet');
-                break;
-            case cordova.plugins.diagnostic.permissionStatus.GRANTED:
-                console.log("Permission granted");
-                show('status', 'Permission granted to use the location');
-                break;
-            case cordova.plugins.diagnostic.permissionStatus.DENIED:
-                console.log("Permission denied");
-                show('status', 'Permission denied to use the location - ask again?');
-                break;
-            case cordova.plugins.diagnostic.permissionStatus.DENIED_ALWAYS:
-                console.log("Permission permanently denied");
-                show('status', 'Permission permanently denied to use the location - guess we won\'t be using it then!');
-                break;
-        }
-    }, function (error) {
-        console.error(error);
-        show('log', 'Aconteceu este erro: ' + error);
-    });
+
+    if (device.platform == 'Android') {
+        cordova.plugins.diagnostic.getLocationAuthorizationStatus(function (status) {
+            switch (status) {
+                case cordova.plugins.diagnostic.permissionStatus.NOT_REQUESTED:
+                    console.log("Permission not requested");
+                    show('status', 'Permission to use the location has not been requested yet');
+                    break;
+                case cordova.plugins.diagnostic.permissionStatus.GRANTED:
+                    console.log("Permission granted");
+                    show('status', 'Permission granted to use the location');
+                    break;
+                case cordova.plugins.diagnostic.permissionStatus.DENIED:
+                    console.log("Permission denied");
+                    show('status', 'Permission denied to use the location - ask again?');
+                    break;
+                case cordova.plugins.diagnostic.permissionStatus.DENIED_ALWAYS:
+                    console.log("Permission permanently denied");
+                    show('status', 'Permission permanently denied to use the location - guess we won\'t be using it then!');
+                    break;
+            }
+        }, function (error) {
+            console.error(error);
+            show('log', 'Aconteceu este erro: ' + error);
+        });
+    } else if (device.platform == 'ios') {
+        cordova.plugins.diagnostic.getLocationAuthorizationStatus(function (status) {
+            switch (status) {
+                case cordova.plugins.diagnostic.permissionStatus.NOT_REQUESTED:
+                    console.log("Permission not requested");
+                    show('log', "Permission not requested");
+                    break;
+                case cordova.plugins.diagnostic.permissionStatus.DENIED:
+                    console.log("Permission denied");
+                    show('log', "Permission denied");
+                    break;
+                case cordova.plugins.diagnostic.permissionStatus.GRANTED:
+                    console.log("Permission granted always");
+                    show('log', "Permission granted always");
+                    break;
+                case cordova.plugins.diagnostic.permissionStatus.GRANTED_WHEN_IN_USE:
+                    console.log("Permission granted only when in use");
+                    show('log', "Permission granted only when in use");
+                    break;
+            }
+        }, function (error) {
+            console.error("The following error occurred: " + error);
+            show('log', "The following error occurred: " + error);
+        });
+    }
+
 });
 
 //########################################################
@@ -226,62 +356,72 @@ $('.authorized').on('click', function () {
         });
 });
 
-/* cordova.plugins.diagnostic.registerLocationStateChangeHandler(function(state){
-    if((device.platform === "Android" && state !== cordova.plugins.diagnostic.locationMode.LOCATION_OFF)
-        || (device.platform === "iOS") && ( state === cordova.plugins.diagnostic.permissionStatus.GRANTED
-            || state === cordova.plugins.diagnostic.permissionStatus.GRANTED_WHEN_IN_USE
-    )){
-        console.log("Location is available");
+//########################################################
+
+$('.request').on('click', function () {
+    if (device.platform == 'Android') {
+        cordova.plugins.diagnostic.requestLocationAuthorization(function (status) {
+            switch (status) {
+                case cordova.plugins.diagnostic.permissionStatus.NOT_REQUESTED:
+                    console.log("Permission not requested");
+                    show('log', "Permission not requested");
+                    break;
+                case cordova.plugins.diagnostic.permissionStatus.GRANTED:
+                    console.log("Permission granted");
+                    show('log', "Permission granted");
+                    break;
+                case cordova.plugins.diagnostic.permissionStatus.DENIED:
+                    console.log("Permission denied");
+                    show('log', "Permission denied");
+                    break;
+                case cordova.plugins.diagnostic.permissionStatus.DENIED_ALWAYS:
+                    console.log("Permission permanently denied");
+                    show('log', "Permission permanently denied");
+                    break;
+            }
+        }, function (error) {
+            console.error(error);
+            show('log', 'Aconteceu este erro: ' + error);
+        });
+    } else if (device.platform == 'ios') {
+        cordova.plugins.diagnostic.requestLocationAuthorization(function (status) {
+            switch (status) {
+                case cordova.plugins.diagnostic.permissionStatus.NOT_REQUESTED:
+                    console.log("Permission not requested");
+                    show('log', "Permission not requested");
+                    break;
+                case cordova.plugins.diagnostic.permissionStatus.DENIED:
+                    console.log("Permission denied");
+                    show('log', "Permission denied");
+                    break;
+                case cordova.plugins.diagnostic.permissionStatus.GRANTED:
+                    console.log("Permission granted always");
+                    show('log', "Permission granted always");
+                    break;
+                case cordova.plugins.diagnostic.permissionStatus.GRANTED_WHEN_IN_USE:
+                    console.log("Permission granted only when in use");
+                    show('log', "Permission granted only when in use");
+                    break;
+            }
+        }, function (error) {
+            console.error(error);
+            show('log', 'Aconteceu este erro: ' + error);
+        }, cordova.plugins.diagnostic.locationAuthorizationMode.ALWAYS);
     }
-}); */
+});
 
+//########################################################
 
-//ios
-/* cordova.plugins.diagnostic.getLocationAuthorizationStatus(function(status){
-    switch(status){
-        case cordova.plugins.diagnostic.permissionStatus.NOT_REQUESTED:
-            console.log("Permission not requested");
-            break;
-        case cordova.plugins.diagnostic.permissionStatus.DENIED:
-            console.log("Permission denied");
-            break;
-        case cordova.plugins.diagnostic.permissionStatus.GRANTED:
-            console.log("Permission granted always");
-            break;
-        case cordova.plugins.diagnostic.permissionStatus.GRANTED_WHEN_IN_USE:
-            console.log("Permission granted only when in use");
-            break;
+$('.testSend').on('click', function () {
+    if (Ctrl.location_use_location == Ctrl.LOCATION_NONE) {
+        show('Send', Ctrl.LOCATION_NONE);
+    } else if (Ctrl.location_use_location == Ctrl.LOCATION_REFUSED) {
+        show('Send', Ctrl.LOCATION_REFUSED);
+    } else {
+        show('Send', JSON.stringify(Ctrl.location_coords));
     }
- }, function(error){
-     console.error("The following error occurred: "+error);
- }); */
+});
 
-
-//Android
-/*  cordova.plugins.diagnostic.getLocationAuthorizationStatus(function(status){
-    switch(status){
-        case cordova.plugins.diagnostic.permissionStatus.NOT_REQUESTED:
-            console.log("Permission not requested");
-            break;
-        case cordova.plugins.diagnostic.permissionStatus.GRANTED:
-            console.log("Permission granted");
-            break;
-        case cordova.plugins.diagnostic.permissionStatus.DENIED:
-            console.log("Permission denied");
-            break;
-        case cordova.plugins.diagnostic.permissionStatus.DENIED_ALWAYS:
-            console.log("Permission permanently denied");
-            break;
-    }
-}, function(error){
-    console.error(error);
-}); */
-
-/* //########################################################
-
-$('.teste2').on('click', function () {
-
-}); */
 
 //########################################################
 //########################################################

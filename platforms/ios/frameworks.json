@@ -1,7 +1,0 @@
-{
-    "CoreBluetooth.framework": 1,
-    "ExternalAccessory.framework": 1,
-    "ImageIO.framework": 1,
-    "CoreLocation.framework": 4,
-    "AVFoundation.framework": 1
-}

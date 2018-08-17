@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">BT.test</string>
-    <string name="launcher_name">@string/app_name</string>
-    <string name="activity_name">@string/launcher_name</string>
-    <string name="SUMUP_API_KEY">1204994d-c495-4e18-9b7e-08d7a7386605</string>
-</resources>

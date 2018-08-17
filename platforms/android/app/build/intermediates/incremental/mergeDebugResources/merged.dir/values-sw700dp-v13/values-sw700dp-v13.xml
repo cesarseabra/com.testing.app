@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <dimen name="welcome_combined_padding_sides">@dimen/margin_32x</dimen>
-    <dimen name="welcome_combined_padding_top">@dimen/margin_32x</dimen>
-</resources>
