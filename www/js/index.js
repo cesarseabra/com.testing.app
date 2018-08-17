@@ -97,6 +97,7 @@ var app = {
             }, function (error) {
                 Ctrl.location_use_location = Ctrl.LOCATION_NONE;
                 console.log('Error request: ' + error);
+                show('request loc err',error);
             });
         }
     },
