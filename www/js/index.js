@@ -73,7 +73,9 @@ var app = {
                 console.log('Error request: ' + error);
             });
         } else if (device.platform == 'iOS') {
+            show('request loc','requested');
             cordova.plugins.diagnostic.requestLocationAuthorization(function (status) {
+                show('request loc stat',status);
                 switch (status) {
                     case cordova.plugins.diagnostic.permissionStatus.NOT_REQUESTED:
                         Ctrl.location_use_location = Ctrl.LOCATION_NONE;
