@@ -38,8 +38,8 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function (id) {
-        this.registerLocationChangeHandler();
-        this.requestLocationAuth();
+        app.registerLocationChangeHandler();
+        app.requestLocationAuth();
     },
     requestLocationAuth: function () {
         if (device.platform == 'Android') {
@@ -72,8 +72,8 @@ var app = {
                 Ctrl.location_use_location = Ctrl.LOCATION_NONE;
                 console.log('Error request: ' + error);
             });
-        } else if (device.platform == 'ios') {
-            cordova.plugins.diagnostic.getLocationAuthorizationStatus(function (status) {
+        } else if (device.platform == 'iOS') {
+            cordova.plugins.diagnostic.requestLocationAuthorization(function (status) {
                 switch (status) {
                     case cordova.plugins.diagnostic.permissionStatus.NOT_REQUESTED:
                         Ctrl.location_use_location = Ctrl.LOCATION_NONE;
@@ -93,6 +93,7 @@ var app = {
 
                 }
             }, function (error) {
+                Ctrl.location_use_location = Ctrl.LOCATION_NONE;
                 console.log('Error request: ' + error);
             });
         }
@@ -103,7 +104,14 @@ var app = {
                 (device.platform === "iOS") && (state === cordova.plugins.diagnostic.permissionStatus.GRANTED ||
                     state === cordova.plugins.diagnostic.permissionStatus.GRANTED_WHEN_IN_USE
                 )) {
-                swal('Location Services Active', 'Done! :D', 'success');
+                    swal({
+                        title: 'Success',
+                        text: 'Location services successfully activated',
+                        showConfirmButton: false,
+                        timer: 2000,
+                        allowOutsideClick: false,
+                        type: "success"
+                    });
                 Ctrl.location_use_location = Ctrl.LOCATION_AGREE;
             } else {
                 app.requestLocationServicesActivation();
@@ -291,7 +299,7 @@ $('.checkPerm').on('click', function () {
             console.error(error);
             show('log', 'Aconteceu este erro: ' + error);
         });
-    } else if (device.platform == 'ios') {
+    } else if (device.platform == 'iOS') {
         cordova.plugins.diagnostic.getLocationAuthorizationStatus(function (status) {
             switch (status) {
                 case cordova.plugins.diagnostic.permissionStatus.NOT_REQUESTED:
@@ -383,7 +391,7 @@ $('.request').on('click', function () {
             console.error(error);
             show('log', 'Aconteceu este erro: ' + error);
         });
-    } else if (device.platform == 'ios') {
+    } else if (device.platform == 'iOS') {
         cordova.plugins.diagnostic.requestLocationAuthorization(function (status) {
             switch (status) {
                 case cordova.plugins.diagnostic.permissionStatus.NOT_REQUESTED:
